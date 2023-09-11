@@ -1,5 +1,5 @@
 --IF YOU ARE GOING TO SKID YOU BETTER KNOW THAT MY CODE IS PROBABLY WORSE THAN YOURS, PLEASE TRY TO DO IT YOURSELF.
---AlonsToolbox 0.04
+--AlonsToolbox 0.05
 util.require_natives("natives-1681379138", "g-uno")
 
 local selfs = menu.list(menu.my_root(), "Self")
@@ -16,7 +16,12 @@ end)
 --SELF START--
 selfs:action("The Third Way", {"itsasetup"}, "Tune in to LSRR ;)", function() SET_CUSTOM_RADIO_TRACK_LIST("RADIO_01_CLASS_ROCK", "END_CREDITS_SAVE_MICHAEL_TREVOR", 1) end)
 --VEHICLE STUFF START-
+local windows = menu.list(vehicle, "Windows Management")
 vehicle:slider("Set Car Dirtiness", {}, "", 0, 15, 0, 1, function(dirt) util.toast(dirt) SET_VEHICLE_DIRT_LEVEL(ptr, dirt) util.toast(GET_VEHICLE_DIRT_LEVEL(ptr)) end)
+windows:toggle("Front Left Window", {"rolldownfl"},"", function() end)
+windows:toggle("Front Right Window", {"rolldownfr"},"", function() end)
+windows:toggle("Back Left Window", {"rolldownbl"}, "", function() end)
+windows:toggle("Back Right Window", {"rolldownbr"}, "", function() end)
 --EXPERIMENT START--
 experiment:action("Cat Create", {}, "Testing ", function() util.requestmodel() entities.create_ped(1, util.joaat("a_c_cat_01"), players.get_position(players.user() ), 0)  end) --n
 experiment:action("MusicTest", {}, "prints current music label  ", function() SET_ACHIEVEMENT_PROGRESS(0, 0) end) 
